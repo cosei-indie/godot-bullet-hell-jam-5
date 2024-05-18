@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://beofkfedlr3u"]
+
+[ext_resource type="Texture2D" uid="uid://v8olmmf2ndcw" path="res://art/kenney_tiny-dungeon/Tilemap/tilemap_packed.png" id="1_s0abr"]
+[ext_resource type="Script" path="res://scenes/pnj/shopkeeper.gd" id="1_wjv5g"]
+[ext_resource type="PackedScene" uid="uid://rc15skdnkitp" path="res://scenes/pnj/interact/interact.tscn" id="2_kqcj8"]
+[ext_resource type="Script" path="res://scenes/pnj/CollisionShape2D.gd" id="3_jrvsj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlfk2"]
+
+[node name="Shopkeeper" type="Node2D"]
+script = ExtResource("1_wjv5g")
+
+[node name="MovingObject" type="Node2D" parent="."]
+
+[node name="Interact" parent="MovingObject" instance=ExtResource("2_kqcj8")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -17)
+scale = Vector2(0.25, 0.25)
+
+[node name="Marker2D" type="Marker2D" parent="MovingObject"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="MovingObject/Marker2D"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingObject/Marker2D/CharacterBody2D"]
+shape = SubResource("CircleShape2D_hlfk2")
+script = ExtResource("3_jrvsj")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingObject/Marker2D/CharacterBody2D"]
+texture = ExtResource("1_s0abr")
+region_enabled = true
+region_rect = Rect2(16, 112, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingObject/Marker2D"]

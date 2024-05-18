@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6r17ly6s56vp"]
+
+[ext_resource type="Theme" uid="uid://bt1ils7ebyiap" path="res://scenes/ui/shop/item/item.tres" id="1_eqflf"]
+[ext_resource type="Script" path="res://scenes/ui/shop/item/item.gd" id="2_upsyg"]
+[ext_resource type="Texture2D" uid="uid://bro7rji8wabon" path="res://art/coin/coin.png" id="3_p7b2g"]
+
+[node name="Item" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eqflf")
+script = ExtResource("2_upsyg")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -31.0
+offset_top = -28.0
+offset_right = 143.0
+offset_bottom = 3.0
+scale = Vector2(0.5, 0.5)
+text = "
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 56.0
+scale = Vector2(0.48, 0.48)
+bbcode_enabled = true
+fit_content = true
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(15, 22)
+scale = Vector2(0.0256904, 0.0256904)
+texture = ExtResource("3_p7b2g")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

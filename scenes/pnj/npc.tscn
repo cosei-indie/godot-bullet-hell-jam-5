@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://beofkfedlr3u"]
+
+[ext_resource type="Texture2D" uid="uid://v8olmmf2ndcw" path="res://art/kenney_tiny-dungeon/Tilemap/tilemap_packed.png" id="1_s0abr"]
+[ext_resource type="Script" path="res://scenes/pnj/npc.gd" id="1_wjv5g"]
+[ext_resource type="PackedScene" uid="uid://cnkn6kt6oeq40" path="res://scenes/ui/shop/shop.tscn" id="2_0y527"]
+[ext_resource type="PackedScene" uid="uid://ca6xgyujnf0oi" path="res://scenes/ui/shop/healing_shop/healing_shop.tscn" id="2_650ab"]
+[ext_resource type="PackedScene" uid="uid://rc15skdnkitp" path="res://scenes/pnj/interact/interact.tscn" id="2_kqcj8"]
+[ext_resource type="Script" path="res://scenes/pnj/CharacterBody2D.gd" id="3_lv3g4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlfk2"]
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_wjv5g")
+
+[node name="MovingObject" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HealingShop" parent="MovingObject" instance=ExtResource("2_650ab")]
+unique_name_in_owner = true
+visible = false
+offset_left = -8.0
+offset_top = -27.0
+offset_right = -8.0
+offset_bottom = -27.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Shop" parent="MovingObject" instance=ExtResource("2_0y527")]
+unique_name_in_owner = true
+visible = false
+offset_left = -14.0
+offset_top = -26.0
+offset_right = -14.0
+offset_bottom = -26.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Interact" parent="MovingObject" instance=ExtResource("2_kqcj8")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -17)
+scale = Vector2(0.25, 0.25)
+
+[node name="Marker2D" type="Marker2D" parent="MovingObject"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="MovingObject/Marker2D"]
+unique_name_in_owner = true
+script = ExtResource("3_lv3g4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingObject/Marker2D/CharacterBody2D"]
+shape = SubResource("CircleShape2D_hlfk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingObject/Marker2D/CharacterBody2D"]
+texture = ExtResource("1_s0abr")
+region_enabled = true
+region_rect = Rect2(16, 112, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingObject/Marker2D"]
+
+[connection signal="can_interact_sig" from="MovingObject/Marker2D/CharacterBody2D" to="." method="_on_character_body_2d_can_interact_sig"]
+[connection signal="cannot_interact_sig" from="MovingObject/Marker2D/CharacterBody2D" to="." method="_on_character_body_2d_cannot_interact_sig"]
+[connection signal="interact_sig" from="MovingObject/Marker2D/CharacterBody2D" to="." method="_on_character_body_2d_interact_sig"]
+[connection signal="stop_interacting_sig" from="MovingObject/Marker2D/CharacterBody2D" to="." method="_on_character_body_2d_stop_interacting_sig"]

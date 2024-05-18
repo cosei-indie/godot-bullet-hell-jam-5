@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpigr6pp4y24y"]
+
+[ext_resource type="Script" path="res://scenes/ui/interactions_manager/interactions_manager.gd" id="1_jlue4"]
+
+[node name="InteractionsManager" type="Control" groups=["interactions_manager"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlue4")

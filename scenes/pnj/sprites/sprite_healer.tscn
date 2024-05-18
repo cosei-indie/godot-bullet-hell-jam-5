@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgrscn7xj38dj"]
+
+[ext_resource type="Texture2D" uid="uid://v8olmmf2ndcw" path="res://art/kenney_tiny-dungeon/Tilemap/tilemap_packed.png" id="1_sy6t6"]
+
+[node name="SpriteHealer" type="Sprite2D"]
+texture = ExtResource("1_sy6t6")
+region_enabled = true
+region_rect = Rect2(32, 112, 16, 16)

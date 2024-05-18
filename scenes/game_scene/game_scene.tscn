@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://btgoenmbvn1u6"]
+
+[ext_resource type="PackedScene" uid="uid://cknyugil6nocb" path="res://scenes/tilemaps/tilemap.tscn" id="1_043bc"]
+[ext_resource type="PackedScene" uid="uid://ctu28e0cq28na" path="res://scenes/char/char.tscn" id="2_0q5dt"]
+[ext_resource type="PackedScene" uid="uid://b8a0fgcs10fnf" path="res://scenes/pnj/npc_manager/npc_manager.tscn" id="3_rhc1m"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Tilemap" parent="." instance=ExtResource("1_043bc")]
+
+[node name="Char" parent="." instance=ExtResource("2_0q5dt")]
+
+[node name="NpcManager" parent="." instance=ExtResource("3_rhc1m")]

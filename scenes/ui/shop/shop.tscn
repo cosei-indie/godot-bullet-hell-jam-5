@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnkn6kt6oeq40"]
+
+[sub_resource type="Theme" id="Theme_b4kal"]
+
+[sub_resource type="Theme" id="Theme_vdkg4"]
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 16
+
+[node name="Shop" type="Control"]
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 37.0
+offset_bottom = 38.0
+scale = Vector2(1.62511, 0.754803)
+theme = SubResource("Theme_b4kal")
+color = Color(0, 0, 0, 0.313726)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_vdkg4")
+columns = 3
